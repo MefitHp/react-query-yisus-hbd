@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Characters from "./components/Characters";
+import Episodes from "./components/Episodes";
 import { ReactQueryDevtools } from "react-query-devtools";
 
 function App() {
@@ -29,8 +31,8 @@ function App() {
           Episodes
         </button>
       </div>
-
-      <ReactQueryDevtools initialIsOpen={false} />
+      {section === "characters" ? <Characters /> : <Episodes />}
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </div>
   );
 }

@@ -4,13 +4,16 @@ import {
   getCharactersError,
   getCharactersSuccess,
 } from "../redux/Characters/character.actions";
+import { BASE_URL } from "../utils";
 
-const fetchCaracters = () => {
-  return {};
+const fetchCharacters = async (key, params) => {
+  const response = await fetch(`${BASE_URL}/characters`);
+  return response.json();
 };
+
 function* fetchUser(action) {
   try {
-    const characters = yield call(fetchCaracters);
+    const characters = yield call(fetchCharacters);
     yield put(getCharactersSuccess(characters));
   } catch (err) {
     yield put(getCharactersError(err));
